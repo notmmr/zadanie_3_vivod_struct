@@ -2,12 +2,13 @@
 
 #include <iostream>
 #include <vector>
+#include <string>
 
-struct Users_t
+struct User
 {
-	std::string m_szCity;
-	std::string m_szStreet;
-	int m_iHomeNumber;
-	int m_iHomeApartments;
-	int m_iCityIndex;
+    std::string city;
+    std::string street;
+    int homeNumber;
+    int homeApartments;
+    int cityIndex;
 };

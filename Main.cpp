@@ -1,38 +1,42 @@
 #include "Ctx.h"
 
-static void AddUserToStruct(
-    std::vector<Users_t>& m_VecUsers,
-    std::string m_szCity,
-    std::string m_szStreet,
-    int m_iHomeNumber,
-    int m_iHomeApartments,
-    int m_iCityIndex)
+static void addUserToStruct(
+    std::vector<User>& users,
+    std::string city,
+    std::string street,
+    int homeNumber,
+    int homeApartments,
+    int cityIndex)
 {
-    Users_t m_User;
-    m_User.m_szCity = m_szCity;
-    m_User.m_szStreet = m_szStreet;
-    m_User.m_iHomeNumber = m_iHomeNumber;
-    m_User.m_iHomeApartments = m_iHomeApartments;
-    m_User.m_iCityIndex = m_iCityIndex;
+    User user;
+    user.city = city;
+    user.street = street;
+    user.homeNumber = homeNumber;
+    user.homeApartments = homeApartments;
+    user.cityIndex = cityIndex;
 
-    m_VecUsers.push_back(m_User);
+    users.push_back(user);
+}
+
+static void printUserInfo(const User& user)
+{
+    std::cout << "City: " << user.city << std::endl;
+    std::cout << "Street: " << user.street << std::endl;
+    std::cout << "Home number: " << user.homeNumber << std::endl;
+    std::cout << "Apartments: " << user.homeApartments << std::endl;
+    std::cout << "City index: " << user.cityIndex << std::endl;
 }
 
 int main()
 {
-    std::vector<Users_t> m_VecUsers;
+    std::vector<User> users;
 
-    AddUserToStruct(m_VecUsers, "Moscow", "Arbat", 12, 8, 123456);
-    AddUserToStruct(m_VecUsers, "Izhevsk", "Pushkin", 59, 143, 953769);
+    addUserToStruct(users, "Moscow", "Arbat", 12, 8, 123456);
+    addUserToStruct(users, "Izhevsk", "Pushkin", 59, 143, 953769);
 
-    for (auto& m_CurrentUser : m_VecUsers)
+    for (const auto& currentUser : users)
     {
-        std::cout << "m_szCity: " << m_CurrentUser.m_szCity << std::endl;
-        std::cout << "m_szStreet: " << m_CurrentUser.m_szStreet << std::endl;
-        std::cout << "m_iHomeNumber: " << m_CurrentUser.m_iHomeNumber << std::endl;
-        std::cout << "m_iHomeApartments: " << m_CurrentUser.m_iHomeApartments << std::endl;
-        std::cout << "m_iCityIndex: " << m_CurrentUser.m_iCityIndex << std::endl;
-
+        printUserInfo(currentUser);
         std::cout << std::endl;
     }
 
